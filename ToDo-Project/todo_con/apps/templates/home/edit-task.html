@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} EDİT TASK {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div >
+    <div class="row">
+        <div class="col md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h3 class="card-title">EDIT TASK</h3>
+                </div>
+                
+                <div class="card-body">
+                    <div class="form-group">
+                        <form action="" method="POST" autocomplete="off">
+                         {% csrf_token %}
+                        </br>
+                         {{form.title|as_crispy_field}}
+                         {{form.description|as_crispy_field}}
+                         
+                         <div class="row">
+                           <div class="col-md-3">
+                             {{form.priority|as_crispy_field}}
+                           </div>
+                           <div class="col-md-3">
+                             {{form.end_time|as_crispy_field}}
+                           </div>
+                         </div>
+                         <input type="submit" value="Update" class = "btn btn-primary pull-right">
+                           <div class="clearfix"></div>
+                        </form>
+                     
+                       
+                       
+                     
+                     
+
+                
+                
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

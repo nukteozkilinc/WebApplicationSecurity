@@ -1,0 +1,99 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Task List {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="row">
+  
+    <div class="col-auto d-flex align-items-end">
+      <label class="text-secondary my-2 pr-2 view-opt-label">Filter</label>
+      <select class="custom-select custom-select-sm btn my-2">
+        <option value="all" selected>All</option>
+        <option value="completed">Completed</option>
+        <option value="active">Incompleted</option>
+      </select>
+    </div>
+
+
+  <div class="col-auto d-flex align-items-center px-1 pr-3">
+    <label class="text-secondary my-2 pr-2 view-opt-label">Sort</label>
+    <select class="custom-select custom-select-sm btn my-2">
+      <option value="added-date-asc" selected>Created Date</option>
+      <option value="due-date-desc">Expiry Date</option>
+    </select>
+    <button type="button" rel="tooltip" title="Decreasing" class="btn btn-primary btn-link btn-sm">
+    <i class="material-icons">sort</i>
+  </div>
+</div>
+    
+<div class="row" >  
+  <div class="col md-12">
+    <div class='card'>
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">TASK LIST</h4>
+      </div>
+    <div class='card-body'> 
+      <div class='table-responsive'>
+        <table class='table table-hover'>
+          <thead class=''>
+            
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Expiry Date</th>
+            
+            
+          </thead>
+          <tbody>
+            {% for data in dataset %}
+            <tr>
+              
+              <td>{{ data.title }}</td>
+              <td><span class="badge bg-light">{{data.priority}}</span></td>
+              <td>{{ data.start_time}}</td>
+              <td>{{ data.end_time }}</td>
+              <td class="td-actions text-right">
+                
+                <a type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm" href="edit/{{ data.id }}"><i class="material-icons">edit</i></a></center>
+                <a type="button" rel="tooltip" title="Task detail" class="btn btn-primary btn-link btn-sm" href="detail/{{ data.id }}"><i class="material-icons">info</i></a></center>
+                <a type="button" rel="tooltip" title="Delete Task" class="btn btn-danger btn-link btn-sm" href="delete/{{ data.id }}"><i class="material-icons">close</i></a></center>
+                
+
+              </td>
+              
+
+            </tr>
+            {% endfor %}
+            <tr>
+
+            </tr>
+          </tbody>
+
+
+        </table>
+
+
+      </div>
+    
+
+    </div>
+        
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<a class="btn btn-primary pull-right"  href="/new-task.html" role="button">Create</a>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,58 @@
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <h2 style='color:#9C27B0'><b>TODO APP<b></h2>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.user.is_authenticated %}
+
+          <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="/">
+              <i class="material-icons">home</i>
+              <p>HOMEPAGE</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+            <a class="nav-link" href="/page-user.html">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'task-list' in segment %} active {% endif %}">
+            <a class="nav-link" href="/task-list.html">
+              <i class="material-icons">task</i>
+              <p>TASK List</p>
+            </a>
+          </li>
+          <li class="nav-item {% if 'new-task' in segment %} active {% endif %}">
+            <a class="nav-link" href="/new-task.html">
+              <i class="material-icons">add_circle</i>
+              <p>Create New Task</p>
+            </a>
+          </li>
+          <!--<li class="nav-item {% if 'edit-task' in segment %} active {% endif %}">
+            <a class="nav-link" href="/edit-task.html">
+              <i class="material-icons">edit_document</i>
+              <p>Edit Task</p>
+            </a>-->
+          
+        
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'logout' %}" >
+              <i class="material-icons">directions_run</i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+          
+
+        {% else %}
+
+                 
+
+        {% endif %}
+        </ul>
+      </div>
+
+    </div>

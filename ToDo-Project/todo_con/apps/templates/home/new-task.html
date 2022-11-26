@@ -1,0 +1,83 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Create New Task {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row">
+  <div class="col md-12">
+      <div class="card">
+          <div class="card-header card-header-primary">
+              <h3 class="card-title">NEW TASK</h3>
+          </div>
+          <div class="card-body">
+              <div class="form-group">
+                
+                  <form method="POST">
+                    
+                    <div class="form-group">
+                     <form action='' method="POST" autocomplete="off">
+                      {% csrf_token %}
+                     </br>
+                      {{form.title|as_crispy_field}}
+                      {{form.description|as_crispy_field}}
+                      
+                      <div class="row">
+                        <div class="col-md-3">
+                          {{form.priority|as_crispy_field}}
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <input type="time" class="form-control datetimepicker" value={{form.start_time|as_crispy_field}} >
+                         
+                          </div> 
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <input type="time" class="form-control datetimepicker" value={{form.end_time|as_crispy_field}} >
+                           
+                            </div>
+                            <div class="col-md-3 ">
+                              <div class="form-group">
+                  
+                                <input type="checkbox" name="task_check" value={{form.completed|as_crispy_field}}>
+
+                                <input type="submit" value="ADD" class = "btn btn-primary pull-right">
+                                <div class="clearfix"></div>
+                              </div>
+                        </div>
+                      </div>
+                        
+                        
+                       
+                    </div>
+                        
+                        
+
+                      </div>
+                      
+                     
+
+                     </form>
+                  
+                    
+                    
+                  
+                  
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
