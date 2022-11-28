@@ -1,5 +1,4 @@
 from dataclasses import field
-from msilib.schema import Class
 from random import choices
 import django_filters
 from .models import Task
